@@ -261,6 +261,7 @@ namespace PostCard
 
             buffer.Display(); buffer.UpdateBuffer();
             List<string> strings = new List<string>();
+            //add text here
             strings.Add("Some Text");
             
 
