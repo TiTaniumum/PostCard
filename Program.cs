@@ -233,9 +233,9 @@ namespace PostCard
                     item.Pulsation(0.2f);
                 }
                 Console.SetCursorPosition((int)(centerX-act4[act4.Count-2].GetHalfLengthX())+4, (int)(centerY - act4[act4.Count-2].getHalfHeightY()+3));
-                Console.Write("C 8-ым Марта, Малика!");
+                Console.Write("Some Text");
                 Console.SetCursorPosition((int)(centerX-act4[act4.Count-2].GetHalfLengthX())+4, (int)(centerY - act4[act4.Count-2].getHalfHeightY()+5));
-                Console.Write("С наилучшими пожеланиями :)");
+                Console.Write("Some Text");
                 buffer.Display(); buffer.UpdateBuffer();
                 ++iteration;
             }
@@ -261,25 +261,8 @@ namespace PostCard
 
             buffer.Display(); buffer.UpdateBuffer();
             List<string> strings = new List<string>();
-            strings.Add("С праздником! Со всей искренностью, программа-открытка специально для моей сокомандницы и очень милой девушке :)");
-            strings.Add("");
-            strings.Add("Пускай живет весна в душе,");
-            strings.Add("Пусть в сердце радость расцветает,");
-            strings.Add("От зимней спячки ведь уже");
-            strings.Add("Весна весь мир освобождает!");
-            strings.Add("");
-            strings.Add("Желаю жить, любить, мечтать");
-            strings.Add("И каждым мигом наслаждаться,");
-            strings.Add("Как солнце яркое, сиять");
-            strings.Add("И лучезарно улыбаться!");
-            strings.Add("");
-            strings.Add("Кажись я слегка перестарался XD но мне очень хотелось сделать нечто подобное.");
-            strings.Add("Да и мне было весело и позновательно делать эту прогу. Покажу код если хочешь.");
-            strings.Add("Где то 2 дня делал ее. И все таки я люблю программирование.");
-            strings.Add("Если честно, очень не хотелось бы терять с тобой связь, после того как ты поступишь куда то за границу.");
-            strings.Add("Хоть мы и не так долго знакомы. Ты очень крутая.");
-            strings.Add("");
-            strings.Add("P.S. от твоего друга Темирлана.");
+            strings.Add("Some Text");
+            
 
             ConsoleColor oldColor = Console.ForegroundColor;
             ConsoleColor oldBackgroundColor = Console.BackgroundColor;
