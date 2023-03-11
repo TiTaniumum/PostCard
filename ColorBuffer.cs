@@ -15,6 +15,7 @@ namespace PostCard
         {
             UpdateBufferSize();
         }
+        //обновление размера буффера
         public void UpdateBufferSize()
         {
             consoleColors= new ConsoleColor[Console.WindowHeight-1][];
@@ -35,6 +36,7 @@ namespace PostCard
                 }
             }
         }
+        //обновление буффера 
         public void UpdateBuffer()
         {
             for (int i = 0; i < consoleColors.Length; i++)
@@ -51,6 +53,7 @@ namespace PostCard
                 Console.SetCursorPosition(x, y);
                 Console.Write(" ");   
         }
+        //анало window.display() из sfml
         public void Display()
         {
             ConsoleColor oldColor = Console.BackgroundColor;

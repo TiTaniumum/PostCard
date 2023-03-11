@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace PostCard
 {
+    // класс отвечает за отображение частиц
     public class Particle
     {
         public ColorBuffer buffer = Singleton.GetColorBuffer();
@@ -34,7 +35,7 @@ namespace PostCard
         public void Move(Vector2 position) => this.position += position;
         public void MoveX(float x) => position.X = x;
         public void MoveY(float y) => position.Y = y;
-
+        // Factory Methid pattern отдает рандомный Particle
         public static Particle GetRanodmParticle(Vector2 spownPoint = new Vector2())
         {
             Random random= new Random();
@@ -42,7 +43,7 @@ namespace PostCard
             Vector2 tempPos = new Vector2(random.Next(-100,200), random.Next(0,Console.BufferHeight-1));
             return new Particle(spownPoint, tempPos, tempColor);
         }
-
+        // занесение в буффер
         public void Draw()
         {
             if (position.X*2<0 || position.Y < 0 || position.Y>=buffer.consoleColors.Length || position.X*2+2>= buffer.consoleColors[0].Length) return;

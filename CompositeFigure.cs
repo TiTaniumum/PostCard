@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace PostCard
 {
+    //небольшая структурка которая отвечает за движение чего либо вперед и назад
     public struct Motion
     {
         private uint Current { get; set; }
@@ -36,6 +37,7 @@ namespace PostCard
     public class CompositeFigure
     {
         protected Vector2 Position;
+        //лист любых фигур, то есть это композитная фигура
         protected List<Shape> compositeFigure;
         public Motion LRMotion;
         public Motion UDMotion;

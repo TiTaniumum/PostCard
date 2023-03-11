@@ -15,6 +15,7 @@ using System.Diagnostics;
 
 namespace PostCard
 {
+    //поворот фигуры
     public enum ShapeType
     {
         Left, Right, Top, Bottom
@@ -25,8 +26,11 @@ namespace PostCard
         public Vector2 SpownPoint { get; set; }
         public Vector2 Position { get; set; }
         protected Vector2 Scale { get; set; }
+
+        //фигура состоит из 2д точек 
         protected List<Vector2> Vertexes { get; set; }
         public ConsoleColor FigureColor { get; set; }
+        //длинна и ширина фигуры
         protected Vector2 MinPos, MaxPos;
         private Motion puls;
         public Shape()
@@ -54,17 +58,22 @@ namespace PostCard
             puls= new Motion();
             puls.Length = 5;
         }
+        // алгоритм принадлежности точки к фигуре 
+        // ссылка на страницу где описаны подобные алгоритмы 
+        // https://ru.wikibooks.org/wiki/%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%BE%D0%B2/%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D0%BF%D1%80%D0%B8%D0%BD%D0%B0%D0%B4%D0%BB%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8_%D1%82%D0%BE%D1%87%D0%BA%D0%B8_%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%D1%83
         public bool isPointInFigure(int x, int y)
         {
             bool result = false;
 
             for (int i = 0, j = Vertexes.Count - 1; i < Vertexes.Count; j = i++)
             {
+
                 Vector2 temp1 = Vertexes[i] * Scale;
                 Vector2 temp2 = Vertexes[j] * Scale;
 
                 bool isYInRange1 = (temp1.Y < temp2.Y) && (temp1.Y <= y) && (y < temp2.Y);
                 bool isYInRange2 = (temp1.Y > temp2.Y) && (temp2.Y <= y) && (y < temp1.Y);
+
                 float lenghtY = (temp2.Y - temp1.Y);
                 float DifferenceByX = x - temp1.X;
                 float MultiplingPart1 = DifferenceByX * lenghtY;
@@ -88,7 +97,7 @@ namespace PostCard
             }
             return result;
         }
-
+        //обновление длинны и ширины 
         public void UpdateMinMax()
         {
             for (int i = 0; i < Vertexes.Count; i++)
@@ -97,10 +106,12 @@ namespace PostCard
                 MaxPos = Vector2.Max(MaxPos, new Vector2(Vertexes[i].X*Scale.X, Vertexes[i].Y*Scale.Y));
             }
         }
+        // фигура вернется к изначальной точке
         public void Respown()
         {
             Position = SpownPoint;
         }
+
         public float Length { get { return Math.Abs(MaxPos.X - MinPos.X); } }
         public float GetHalfLengthX()
         {
@@ -145,16 +156,8 @@ namespace PostCard
         public void MoveY(float y) => Position += new Vector2(0, y);
         public void Move(float x, float y) => Position += new Vector2(x, y);
         public void Move(Vector2 position) => Position += position;
-        public void DrawAt(int x, int y)
-        {
-            int posx = (int)Position.X+x*2;
-            int posy = (int)Position.Y + y;
-            if (posx < Console.WindowWidth && posy < Console.WindowHeight && posx>=0 && posy>=0)
-            {
-                Console.SetCursorPosition(posx, posy);
-                Console.Write("  ");
-            }
-        }
+        
+        //занесение фигуры в буффер, аналог window.draw() в sfml
         public virtual void Draw(int offsetx = 0, int offsety = 0)
         {
             int xMaxLength = colorBuffer.consoleColors[0].Length;
@@ -175,7 +178,7 @@ namespace PostCard
                 }
             }
         }
-
+        // вращение фигуры взят у chatGPT
         public void RotateFigure(double angle)
         {
             // Calculate sine and cosine of the angle
@@ -200,6 +203,7 @@ namespace PostCard
             }
             UpdateMinMax();
         }
+        //метод пульсации фигуры. меняется скейл
         public void Pulsation(float pulsationPower = 0.5f)
         {
             if (puls.isRightMotion())

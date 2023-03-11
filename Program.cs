@@ -186,7 +186,6 @@ namespace PostCard
         }
         public static void Act4()
         {
-            //Console.Clear();
             Random random = new Random();
             List<Particle> particles = new List<Particle>();
             for (int i = 0; i < 200; i++)
@@ -293,6 +292,8 @@ namespace PostCard
             Act5();
             Console.ReadLine();
         }
+
+        //дальше код взятый у ChatGPT для того что бы сделать консоль полноразмерной.  он используется в конструкторе главного класса
 
         // Define the SetConsoleFullScreen function from kernel32.dll
         [DllImport("kernel32.dll", SetLastError = true)]
