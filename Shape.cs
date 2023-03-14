@@ -83,14 +83,6 @@ namespace PostCard
 
 
                 if ((isYInRange1 && (MultiplingPart1 >=MultiplingPart2))||(isYInRange2 && (MultiplingPart1 <= MultiplingPart2)))
-
-                    if ((
-                      (temp1.Y < temp2.Y) && (temp1.Y <= y) && (y < temp2.Y) &&
-                      ((temp2.Y - temp1.Y) * (x - temp1.X) >= (temp2.X - temp1.X) * (y - temp1.Y))
-                    ) || (
-                      (temp1.Y > temp2.Y) && (temp2.Y <= y) && (y < temp1.Y) &&
-                      ((temp2.Y - temp1.Y) * (x - temp1.X) <= (temp2.X - temp1.X) * (y - temp1.Y))
-                    ))
                     {
                         result = !result;
                     }
